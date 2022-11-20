@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middlewares/admin");
-const adminController = require("../controllers/adminController");
+const adminController = require("../controllers/adminControllers");
 const studentController = require("../controllers/studentController");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
@@ -24,11 +24,12 @@ var upload = multer({
     },
   }),
 });
+const uploadXLSX = multer({dest: './File'})
 
 //login for admin
 router.post('/login',adminController.login)
 //add allotted Students through sheets
-router.post('/addStudents',auth,adminController.addStudents)
+router.post('/addStudents',auth,uploadXLSX.single("file"),adminController.addStudents)
 //get details of particular Student
 router.get('/getDetails',auth,studentController.getDetails)
 //get application of particular Student
@@ -40,7 +41,7 @@ router.post('/reviewApplication',auth,adminController.reviewApplication)
 //review  document of particular application
 router.post('/reviewDocument',auth,adminController.reviewDocument)
 //add Fees 
-router.post('/addFees',auth,upload.single("file", 1),adminController.addFees)
+router.post('/addFees',auth,upload.single("file"),adminController.addFees)
 //verify feeProof
 router.post('/reviewFeeProof',auth , adminController,reviewFeeProof)
 

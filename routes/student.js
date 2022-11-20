@@ -29,9 +29,9 @@ router.post('/addEditBasicDetails',auth,studentControllers.addEditBasicDetails)
 router.post('/addEditApplication',auth, studentControllers.addEditApplication)
 router.get('/getBasicDetails',auth,studentControllers.getBasicDetails)
 router.get('/getApplication',auth, studentControllers.getApplication)
-router.get('/uploadDocuments',auth,upload.single("file", 1),studentControllers.uploadDocuments)
+router.get('/uploadDocuments',auth,upload.single("file"),studentControllers.uploadDocuments)
 router.get('/getDocuments',auth,studentControllers.getDocuments)
-router.post('/uploadFeeProof',auth,upload.single("file", 1),studentControllers.uploadFeeProof)
+router.post('/uploadFeeProof',auth,upload.single("file"),studentControllers.uploadFeeProof)
 router.get('/getFeeStatus',auth,studentControllers.getFeeStatus)
 
 module.exports = router;

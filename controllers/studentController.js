@@ -1,9 +1,9 @@
 const axios= require('axios');
-const student = require("../models/student");
-const document = require("../models/document");
-const application = require("../models/application");
-const basicDetails = require("../models/basicDetails");
-
+const student = require("../models/Student");
+const document = require("../models/Document");
+const application = require("../models/Application");
+const basicDetails = require("../models/BasicDetails");
+const feeProof = require("../models/FeeProof");
 const login = async(req,res,next)=>{
   let payloadData = req.body;
   try { 
